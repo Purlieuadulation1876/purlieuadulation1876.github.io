@@ -135,8 +135,6 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 .footer-inner{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--text-faint);flex-wrap:wrap;gap:12px}
 .footer-inner a:hover{color:var(--accent)}
 
-
-/* Scroll-driven enhancements (compositor-run; browsers without support just show everything) */
 @supports (animation-timeline:view()){
   .reveal{--y:20px;animation:in linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
 }
