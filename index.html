@@ -9,9 +9,12 @@
 <link rel="preconnect" href="https://api.github.com" crossorigin>
 <link rel="dns-prefetch" href="https://ghchart.rshah.org">
 <link rel="dns-prefetch" href="https://i.pinimg.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://i.pinimg.com/originals/a0/96/66/a09666713646450bc9f8ac391dd48563.jpg" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
-:root{--bg:#0b0e11;--surface:rgba(18,22,27,.92);--surface-2:rgba(22,27,33,.95);--border:#20262d;--text:#f0f4f8;--text-dim:#a3adc0;--text-faint:#6e7987;--accent:#a78bfa;--accent-dim:#5f4b96;--teal:#5ee6c8;--mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;--maxw:1100px}
+:root{--bg:#0b0e11;--surface:rgba(18,22,27,.92);--surface-2:rgba(22,27,33,.95);--border:#20262d;--text:#f0f4f8;--text-dim:#a3adc0;--text-faint:#6e7987;--accent:#a78bfa;--accent-dim:#5f4b96;--teal:#c4b5fd;--mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;--maxw:1100px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -19,20 +22,18 @@ a{color:inherit;text-decoration:none}
 section{position:relative;z-index:1}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
 ::selection{background:var(--accent);color:var(--bg)}
-
-
 h1.name,.eyebrow,.role-line,.bio,.section-title,.section-sub,.about-text,.meta-list,.stat-item{text-shadow:0 2px 10px rgba(11,14,17,.95),0 0 2px #0b0e11}
 
 /* Nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,14,17,.92);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
-.logo i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite}
+.logo i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite;will-change:opacity}
 @keyframes pulse{50%{opacity:.35}}
 .nav-links{display:flex;gap:36px;font-family:var(--mono);font-size:13px;color:var(--text-dim)}
 .nav-links a{position:relative;padding:4px 0;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;will-change:transform}
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav-cta{font-family:var(--mono);font-size:13px;border:1px solid var(--border);padding:8px 14px;border-radius:6px;transition:border-color .2s,color .2s;display:flex;align-items:center;gap:6px;background:rgba(18,22,27,.6)}
 .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
@@ -43,7 +44,7 @@ h1.name,.eyebrow,.role-line,.bio,.section-title,.section-sub,.about-text,.meta-l
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;width:100%}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @keyframes in{from{opacity:0;transform:translateY(var(--y,14px))}}
-.hero-l>*{animation:in .7s ease backwards}
+.hero-l>*{animation:in .7s ease backwards;will-change:transform,opacity}
 .hero-l>:nth-child(2){animation-delay:.1s}.hero-l>:nth-child(3){animation-delay:.2s}.hero-l>:nth-child(4){animation-delay:.3s}.hero-l>:nth-child(5){animation-delay:.4s}.hero-l>:nth-child(6){animation-delay:.5s}
 .eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:22px}
 .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
@@ -61,7 +62,7 @@ h1.name{font-size:clamp(44px,7vw,76px);font-weight:700;line-height:1.02;letter-s
 @keyframes t5{0%,73.4%{width:0;animation-timing-function:steps(23)}84.2%{width:23ch;animation-timing-function:linear}92.4%{width:23ch;animation-timing-function:steps(23)}98.1%,100%{width:0}}
 .bio{color:var(--text-dim);font-size:16px;max-width:480px;margin-bottom:34px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.btn{font-family:var(--mono);font-size:14px;padding:13px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.btn{font-family:var(--mono);font-size:14px;padding:13px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;will-change:transform}
 .btn-primary{background:var(--accent);color:var(--bg);font-weight:600}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(var(--accent-rgb),.5)}
 .btn-outline{border:1px solid var(--border);color:var(--text);background:rgba(18,22,27,.5)}
@@ -82,7 +83,7 @@ h1.name{font-size:clamp(44px,7vw,76px);font-weight:700;line-height:1.02;letter-s
 .term-out{color:var(--text)}
 .avatar-row{display:flex;align-items:center;gap:12px;margin:10px 0 16px}
 .avatar-row img{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);object-fit:cover;background:var(--surface-2);display:block}
-.hero-terminal{--y:20px;animation:in .8s ease .3s backwards}
+.hero-terminal{--y:20px;animation:in .8s ease .3s backwards;will-change:transform,opacity}
 .live .term-body{min-height:0;padding-bottom:14px}
 .term-welcome{color:var(--text-faint);margin-bottom:10px}
 .term-welcome b,.hl{color:var(--accent)}
@@ -112,12 +113,12 @@ section.pad{padding:110px 0}
 .skill-pct{font-family:var(--mono);font-size:12px;color:var(--text-faint);text-align:right}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media(max-width:820px){.proj-grid{grid-template-columns:1fr}}
-.proj-card{border:1px solid var(--border);border-radius:12px;padding:26px;background:var(--surface);transition:transform .25s ease,border-color .25s ease;display:flex;flex-direction:column;gap:14px;animation:in .6s ease backwards}
+.proj-card{border:1px solid var(--border);border-radius:12px;padding:26px;background:var(--surface);transition:transform .25s ease,border-color .25s ease;display:flex;flex-direction:column;gap:14px;animation:in .6s ease backwards;will-change:transform,border-color}
 .proj-card:nth-child(2){animation-delay:.08s}.proj-card:nth-child(3){animation-delay:.16s}.proj-card:nth-child(4){animation-delay:.24s}
 .proj-card:hover{border-color:var(--accent-dim);transform:translateY(-4px)}
 .proj-top{display:flex;justify-content:space-between;align-items:flex-start}
 .proj-name{font-family:var(--mono);font-size:16px;font-weight:600}
-.proj-arrow{color:var(--text-faint);transition:transform .2s,color .2s}
+.proj-arrow{color:var(--text-faint);transition:transform .2s,color .2s;will-change:transform,color}
 .proj-card:hover .proj-arrow{transform:translate(3px,-3px);color:var(--accent)}
 .proj-desc{color:var(--text-dim);font-size:14px;flex:1}
 .proj-foot{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:12px;color:var(--text-faint)}
@@ -125,9 +126,10 @@ section.pad{padding:110px 0}
 .lang-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .note{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);margin-top:18px}
 .chart-card{border:1px solid var(--border);border-radius:12px;padding:24px;background:var(--surface);overflow-x:auto}
-.chart-card img{min-width:600px;width:100%;display:block}
+.chart-card img{min-width:600px;width:100%;height:auto;aspect-ratio:720/112;display:block}
 .chart-label{font-family:var(--mono);font-size:12px;color:var(--text-faint);margin-bottom:14px}
 .contact-box{border:1px solid var(--border);border-radius:16px;padding:64px 48px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(var(--accent-rgb),.1),var(--surface) 70%)}
+.contact-box.bg-on{background-image:radial-gradient(circle at 50% 0,rgba(11,14,17,.55),rgba(11,14,17,.9) 75%),linear-gradient(var(--accent),var(--accent)),url('https://i.pinimg.com/originals/c8/f5/5d/c8f55d803ff511d5042cb09b879843fb.gif');background-blend-mode:normal,hue,normal;background-size:cover,cover,cover;background-position:center,center,center;background-repeat:no-repeat,no-repeat,no-repeat}
 .contact-box h2{font-size:clamp(28px,4vw,44px);font-weight:700;margin-bottom:16px;letter-spacing:-.01em}
 .contact-box p{color:var(--text-dim);margin-bottom:32px}
 .contact-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -135,8 +137,11 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 .footer-inner{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--text-faint);flex-wrap:wrap;gap:12px}
 .footer-inner a:hover{color:var(--accent)}
 
+/* Scroll-driven enhancements */
 @supports (animation-timeline:view()){
   .reveal{--y:20px;animation:in linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+  .skill-fill{transform-origin:left;animation:fx linear both;animation-timeline:view();animation-range:entry 20% entry 100%}
+  @keyframes fx{from{transform:scaleX(0)}}
 }
 @supports (animation-timeline:scroll()){
   .nav{animation:navb linear both;animation-timeline:scroll(root);animation-range:0 24px}
@@ -157,7 +162,10 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 .live .term-body::-webkit-scrollbar{width:8px}
 .live .term-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
 .term-input-row{display:flex;align-items:center;gap:8px;margin-top:4px}
-.term-input-row input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font:inherit;caret-color:var(--accent)}
+.term-input-wrap{position:relative;flex:1;min-width:0}
+.term-input-wrap input{width:100%;position:relative;z-index:1;background:transparent;border:0;outline:0;color:var(--text);font:inherit;caret-color:var(--accent);padding:0;margin:0}
+.ghost{position:absolute;left:0;top:0;z-index:0;white-space:pre;font:inherit;padding:0;margin:0;pointer-events:none}
+.ghost b{color:var(--text-faint);font-weight:400}
 .term-link{color:var(--teal);text-decoration:underline}
 .term-error{color:#ff6b6b}
 .pre{white-space:pre-wrap;word-break:break-word}
@@ -165,12 +173,8 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 .nf{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin:8px 0;line-height:1.6}
 .proj-card:nth-child(n+5){animation-delay:.32s}
 .proj-skeleton{height:150px;border:1px dashed var(--border);border-radius:12px;background:var(--surface)}
-@supports (animation-timeline:view()){
-  .skill-fill{transform-origin:left;animation:fx linear both;animation-timeline:view();animation-range:entry 20% entry 100%}
-  @keyframes fx{from{transform:scaleX(0)}}
-}
 .stream{position:fixed;right:24px;bottom:24px;z-index:1000;font-family:var(--mono)}
-.sc{width:52px;height:52px;border-radius:26px;background:var(--surface);border:1px solid var(--accent-dim);box-shadow:0 0 15px rgba(var(--accent-rgb),.25);display:flex;align-items:center;overflow:hidden;transition:width .35s cubic-bezier(.16,1,.3,1),border-radius .35s cubic-bezier(.16,1,.3,1)}
+.sc{width:52px;height:52px;border-radius:26px;background:var(--surface);border:1px solid var(--accent-dim);box-shadow:0 0 15px rgba(var(--accent-rgb),.25);display:flex;align-items:center;overflow:hidden;transition:width .35s cubic-bezier(.16,1,.3,1),border-radius .35s cubic-bezier(.16,1,.3,1);will-change:width,border-radius}
 .stream:hover .sc{width:250px;border-radius:14px}
 .si,.sb{display:flex;align-items:center;justify-content:center;border:0;background:none;cursor:pointer}
 .si{width:52px;height:52px;flex:none;color:var(--accent)}
@@ -179,7 +183,7 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 .sb svg{width:14px;height:14px}
 .si svg,.sb svg{fill:currentColor}
 .sb:hover{background:rgba(255,255,255,.08);color:var(--accent)}
-.sn{display:flex;align-items:center;flex:1;min-width:0;padding-right:12px;opacity:0;pointer-events:none;transition:opacity .25s ease .05s;white-space:nowrap}
+.sn{display:flex;align-items:center;flex:1;min-width:0;padding-right:12px;opacity:0;pointer-events:none;transition:opacity .25s ease .05s;white-space:nowrap;will-change:opacity}
 .stream:hover .sn{opacity:1;pointer-events:auto}
 .sn div{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
 .sn b{font-size:12px;font-weight:600;overflow:hidden;text-overflow:ellipsis}
@@ -189,11 +193,11 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 </style>
 </head>
 <body>
-<canvas id="g"></canvas>
+<canvas id="g" aria-hidden="true"></canvas>
 
 <nav class="nav">
   <div class="nav-inner">
-    <div class="logo"><i></i>fariscodess</div>
+    <div class="logo"><i aria-hidden="true"></i>fariscodess</div>
     <div class="nav-links">
       <a href="#playground">terminal</a>
       <a href="#about">about</a>
@@ -216,8 +220,12 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
       <div class="role-line"><span class="typed"><span class="w1">software engineer</span><span class="w2">programmer</span><span class="w3">coder</span><span class="w4">problem solver</span><span class="w5">open source contributor</span></span><span class="cursor">_</span></div>
       <p class="bio" data-f="bio">Software developer. Building things, one commit at a time.</p>
       <div class="hero-actions">
-        <a href="#work" class="btn btn-primary">View Work →</a>
-        <a href="https://github.com/fariscodess" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+        <a href="#work" class="btn btn-primary">
+          View Work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="https://github.com/fariscodess" target="_blank" rel="noopener" class="btn btn-outline">
+          GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
       </div>
       <div class="stat-row">
         <div class="stat-item"><div class="num" data-f="repos">–</div><div class="label">Repos</div></div>
@@ -235,7 +243,7 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
       <div class="term-body">
         <div class="term-line"><span class="term-prompt">$</span> whoami</div>
         <div class="avatar-row">
-          <img src="https://i.pinimg.com/originals/a0/96/66/a09666713646450bc9f8ac391dd48563.jpg" alt="avatar" width="44" height="44" decoding="async">
+          <img src="https://i.pinimg.com/originals/a0/96/66/a09666713646450bc9f8ac391dd48563.jpg" alt="avatar" width="44" height="44" decoding="async" fetchpriority="high">
           <span class="term-out" data-f="user">fariscodess</span>
         </div>
         <div class="term-line"><span class="term-prompt">$</span> cat location.txt</div>
@@ -245,7 +253,9 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
         <div class="term-out" data-f="langs">Python</div>
         <br>
         <div class="term-line"><span class="term-prompt">$</span> ./status.sh</div>
-        <div class="term-out" style="color:var(--teal)">✓ shipping code</div>
+        <div class="term-out" style="color:var(--teal); display:flex; align-items:center; gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> shipping code
+        </div>
       </div>
     </div>
   </div>
@@ -269,7 +279,13 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
       <div class="term-body">
         <div class="term-welcome">Welcome. This is a live shell — type <b>help</b> to see available commands.</div>
         <div id="tl"></div>
-        <div class="term-input-row"><span class="term-prompt">guest@fariscodess:~$</span><input id="ti" autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="terminal input"></div>
+        <div class="term-input-row">
+          <span class="term-prompt">guest@fariscodess:~$</span>
+          <div class="term-input-wrap">
+            <div class="ghost" id="gh" aria-hidden="true"></div>
+            <input id="ti" autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="terminal input">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -336,7 +352,7 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
     </div>
     <div class="chart-card reveal">
       <div class="chart-label">// contribution graph</div>
-      <img src="https://ghchart.rshah.org/a78bfa/fariscodess" alt="Contribution graph" loading="lazy" decoding="async">
+      <img src="https://ghchart.rshah.org/a78bfa/fariscodess" width="720" height="112" alt="Contribution graph" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -347,8 +363,12 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
       <h2>Let's build something.</h2>
       <p>Open to interesting projects, collaborations, and opportunities.</p>
       <div class="contact-actions">
-        <a href="https://github.com/fariscodess" target="_blank" rel="noopener" class="btn btn-primary">GitHub ↗</a>
-        <a href="https://discord.com/users/799135456218447882" target="_blank" rel="noopener" class="btn btn-outline">Message on Discord →</a>
+        <a href="https://github.com/fariscodess" target="_blank" rel="noopener" class="btn btn-primary">
+          GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <a href="https://discord.com/users/799135456218447882" target="_blank" rel="noopener" class="btn btn-outline">
+          Message on Discord <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -357,7 +377,9 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
 <footer>
   <div class="wrap footer-inner">
     <span>© 2026 fariscodess — built with HTML, CSS &amp; a little JS</span>
-    <a href="#hero">back to top ↑</a>
+    <a href="#hero" style="display:flex;align-items:center;gap:4px">
+      back to top <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </a>
   </div>
 </footer>
 
@@ -398,6 +420,11 @@ footer{padding:36px 0;border-top:1px solid var(--border);position:relative;z-ind
                 ||----w |
                 ||     ||
 </script>
+<script type="text/plain" id="a5">
+     /\_/\
+    ( o.o )
+     > ^ <
+</script>
 <script>
 (()=>{
 'use strict';
@@ -405,10 +432,10 @@ const $=id=>document.getElementById(id),U='fariscodess',
 esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 let A=[167,139,250],TN='purple';
 
-/* ---- Grid canvas: draws only while the pointer moves, then goes fully idle ---- */
 const cv=$('g'),g=cv.getContext('2d'),S=68,FL=900,R=220,N=[];
-let W,H,D,cols,rows,ox,oy,PX,PY,PD,PS,tx=-1e3,ty=-1e3,cx=-1e3,cy=-1e3,tX=0,tY=0,cX=0,cY=0,raf=0;
+let W,H,D,cols,rows,ox,oy,PX,PY,PD,PS,tx=-1e3,ty=-1e3,cx=-1e3,cy=-1e3,tX=0,tY=0,cX=0,cY=0,raf=0,isRs=false;
 const kick=()=>{raf||(raf=requestAnimationFrame(frame))};
+
 function size(){
   D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
   cv.width=W*D;cv.height=H*D;
@@ -416,16 +443,19 @@ function size(){
   const n=cols*rows;PX=new Float32Array(n);PY=new Float32Array(n);PD=new Float32Array(n);PS=new Float32Array(n);
   kick();
 }
+
 function frame(){
   raf=0;
   cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;cX+=(tX-cX)*.05;cY+=(tY-cY)*.05;
   draw();
   if(Math.abs(tx-cx)+Math.abs(ty-cy)>.5||Math.abs(tX-cX)+Math.abs(tY-cY)>1e-4)kick();
 }
+
 function seg(i,j){
   const m=(PD[i]+PD[j])/2;
   if(m<R)N.push(i,j,m);else{g.moveTo(PX[i],PY[i]);g.lineTo(PX[j],PY[j])}
 }
+
 function draw(){
   g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,W,H);
   const hx=W/2,hy=H/2,a=Math.cos(cY),b=Math.sin(cY),e=Math.cos(cX),f=Math.sin(cX),on=cx>-500;
@@ -454,13 +484,18 @@ function draw(){
     g.fillStyle=`rgba(${A[0]},${A[1]},${A[2]},${.15+t*.45})`;g.fill();
   }
 }
+
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
   addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;tX=(ty/H-.5)*.15;tY=-(tx/W-.5)*.15;kick()},{passive:true});
   document.documentElement.addEventListener('mouseleave',()=>{tx=ty=-1e3;tX=tY=0;kick()});
 }
-addEventListener('resize',size);size();
 
-/* ---- GitHub data: parallel fetch, 1h cache, one DOM pass ---- */
+// Throttled Resize Event to prevent layout thrashing
+addEventListener('resize', () => {
+  if(!isRs){isRs=true;requestAnimationFrame(()=>{size();isRs=false})}
+});
+size();
+
 let P={},Rp=[],L=[['Python',100]],TOP=[];
 async function load(){
   let c;try{c=JSON.parse(localStorage.getItem('gh'))}catch{}
@@ -471,6 +506,7 @@ async function load(){
   if(c&&c.p){P=c.p;Rp=Array.isArray(c.r)?c.r:[]}
   paint();
 }
+
 function paint(){
   const nm=P.name||U,cnt={};
   Rp.forEach(r=>{if(r.language)cnt[r.language]=(cnt[r.language]||0)+1});
@@ -485,32 +521,27 @@ function paint(){
   document.querySelectorAll('[data-f]').forEach(e=>e.textContent=V[e.dataset.f]);
   $('ab').innerHTML=(P.bio?esc(P.bio)+' ':'')+`This site pulls a live snapshot of <strong>${esc(nm)}'</strong>s public GitHub activity straight from the GitHub API each time it loads.`;
   $('sk').innerHTML=L.map(([l,p])=>`<div class="skill-bar"><div class="skill-name">${esc(l)}</div><div class="skill-track"><div class="skill-fill" style="width:${p}%"></div></div><div class="skill-pct">${p}%</div></div>`).join('');
-  $('pg').innerHTML=TOP.length?TOP.map(r=>`<a class="proj-card" href="${esc(r.html_url)}" target="_blank" rel="noopener"><div class="proj-top"><span class="proj-name">${esc(r.name)}</span><span class="proj-arrow">↗</span></div><p class="proj-desc">${esc(r.description||'No description provided.')}</p><div class="proj-foot">${r.language?`<span><span class="lang-dot"></span>${esc(r.language)}</span>`:''}<span>★ ${r.stargazers_count||0}</span><span>⑂ ${r.forks_count||0}</span></div></a>`).join(''):'<p class="note">No public repositories found for this account yet.</p>';
+  $('pg').innerHTML=TOP.length?TOP.map(r=>`<a class="proj-card" href="${esc(r.html_url)}" target="_blank" rel="noopener"><div class="proj-top"><span class="proj-name">${esc(r.name)}</span><span class="proj-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></div><p class="proj-desc">${esc(r.description||'No description provided.')}</p><div class="proj-foot">${r.language?`<span><span class="lang-dot"></span>${esc(r.language)}</span>`:''}<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> ${r.stargazers_count||0}</span><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"></path><path d="M12 12v3"></path></svg> ${r.forks_count||0}</span></div></a>`).join(''):'<p class="note">No public repositories found for this account yet.</p>';
 }
 
-/* ---- Terminal ---- */
 const box=$('lt'),SC=box.querySelector('.term-body'),T=$('tl'),I=$('ti'),hist=[];let hp=0;
 const art=id=>esc($(id).textContent.replace(/^\n\vert{}\n$/g,'')),pre=t=>`<pre>${t}</pre>`,
 out=(h,c='')=>{const d=document.createElement('div');d.className='term-out '+c;d.innerHTML=h;T.appendChild(d)};
-const TH={purple:['#a78bfa','#5f4b96'],
-  teal:['#5ee6c8','#2f7f70'],
-  amber:['#fbbf24','#8a6a12'],
-  rose:['#fb7185','#96404e'],
-  blue:['#60a5fa','#345f96'],
-  emerald:['#34d399','#059669'],
-  orange:['#fb923c','#ea580c'],
-  cyan:['#22d3ee','#0891b2'],
-  magenta:['#e879f9','#c026d3']};
+const TH={purple:['#a78bfa','#5f4b96','#c4b5fd'],pink:['#f472b6','#9d174d','#fbcfe8'],red:['#f87171','#7f1d1d','#fca5a5'],orange:['#fb923c','#ea580c','#fdba74'],yellow:['#facc15','#854d0e','#fde047'],green:['#4ade80','#166534','#86efac'],blue:['#60a5fa','#345f96','#93c5fd']};
+const SECT={about:'#about',skills:'#skills',work:'#work',projects:'#work',stats:'#statsSection',contact:'#contact',top:'#hero',home:'#hero'};
+
 function setTheme(n){
   const t=TH[n];if(!t)return false;
   const s=document.documentElement.style;A=[1,3,5].map(i=>parseInt(t[0].slice(i,i+2),16));
-  s.setProperty('--accent',t[0]);s.setProperty('--accent-dim',t[1]);s.setProperty('--accent-rgb',A.join());
+  s.setProperty('--accent',t[0]);s.setProperty('--accent-dim',t[1]);s.setProperty('--accent-rgb',A.join());s.setProperty('--teal',t[2]);
   TN=n;try{localStorage.setItem('th',n)}catch{}
   kick();return true;
 }
+
 const FT=['It works on my machine.','There are two hard things in CS: cache invalidation, naming things, and off-by-one errors.','Talk is cheap. Show me the code.','Premature optimization is the root of all evil.','// TODO: fix later','git commit -m "final_FINAL_v2"','Have you tried turning it off and on again?','A good programmer looks both ways before crossing a one-way street.'];
-const HL=[['help','','show this list'],['about','','short bio'],['skills','','top languages'],['projects','','top repositories'],['contact','','how to reach out'],['whoami','','who you are'],['github','','open the GitHub profile'],['neofetch','','system-style summary'],['cowsay','<text>','a cow says it'],['fortune','','random dev wisdom'],['hack','','you know you want to'],['theme','<name>','purple, teal, amber, rose, blue, emerald, orange, cyan, magenta'],['cd','<section>','about, skills, work, stats, contact'],['ls','','list sections'],['date','','current date'],['echo','<text>','repeat it'],['clear','','clear the screen (Ctrl+L)']];
-const X={sudo:'Permission denied: nice try 😄',rm:"rm: cannot remove '/': Permission denied. Nice try 😄",exit:'logout... just kidding, there is no escape.',vim:'You are now trapped in vim. Try :q!'};
+const HL=[['help','','show this list'],['about','','short bio'],['skills','','top languages'],['projects','','top repositories'],['contact','','how to reach out'],['whoami','','who you are'],['neofetch','','system-style summary'],['cowsay','<text>','a cow says it'],['cat','','pet the cat'],['fortune','','random dev wisdom'],['hack','','you know you want to'],['theme','<name>','purple, pink, red, orange, yellow, green, blue'],['cd','<section>','about, skills, work, stats, contact'],['ls','','list sections'],['date','','current date'],['echo','<text>','repeat it'],['clear','','clear the screen (Ctrl+L)']];
+const X={sudo:'Permission denied: nice try.',rm:"rm: cannot remove '/': Permission denied. Nice try.",exit:'logout... just kidding, there is no escape.',vim:'You are now trapped in vim. Try :q!'};
+
 const C={
   help(){out('Available commands:\n'+HL.map(h=>'  <span class="hl">'+esc((h[0]+(h[1]?' '+h[1]:'')).padEnd(15))+'</span>'+esc(h[2])).join('\n'),'pre')},
   about(){out(esc(P.bio||'No bio set on GitHub yet.'))},
@@ -518,18 +549,17 @@ const C={
   projects(){out(TOP.length?TOP.slice(0,5).map(r=>`<a class="term-link" href="${esc(r.html_url)}" target="_blank" rel="noopener">${esc(r.name)}</a> — ★${r.stargazers_count||0}${r.language?' · '+esc(r.language):''}`).join('<br>'):'No repositories found.')},
   contact(){out(`Discord: <a class="term-link" href="https://discord.com/users/799135456218447882" target="_blank" rel="noopener">discord.com/users/799135456218447882</a><br>GitHub: <a class="term-link" href="https://github.com/${U}" target="_blank" rel="noopener">github.com/${U}</a>`)},
   whoami(){out("guest — currently browsing fariscodess' portfolio.")},
-  github(){out('Opening github.com/'+U+'…');open('https://github.com/'+U,'_blank','noopener')},
   neofetch(){out(`<div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 8px; margin-bottom: 8px;"><img src="https://preview.redd.it/where-is-this-ascii-art-from-v0-pcdjxaf1px2g1.png?auto=webp&s=219817c9bcc69253d976080df718bdf8202deb1f" alt="ASCII Art" referrerpolicy="no-referrer" style="height: 140px; width: auto; border-radius: 6px; image-rendering: pixelated; clip-path: inset(0 4px 0 0);"><div style="line-height: 1.6;"><span style="color:var(--accent); font-weight: bold;">${esc(P.name||U)}</span><br>guest@fariscodess<br>repos: ${P.public_repos??0}<br>followers: ${P.followers??0}<br>top lang: ${esc(L[0][0])}<br>theme: ${TN}<br>status: shipping code</div></div>`)},
   cowsay(a){const t=(a||'moo').slice(0,40),n=t.length+2;out(pre(` ${'_'.repeat(n)}\n&lt; ${esc(t)} &gt;\n ${'-'.repeat(n)}\n`+art('a4')))},
+  cat(){out(pre(art('a5'))+'<div class="term-out hl" style="margin-top:2px">*purr*</div>')},
   fortune(){out(esc(FT[Math.random()*FT.length|0]))},
   hack(){
     const d=document.createElement('div');d.className='term-out pre';T.appendChild(d);let n=0;
-    const t=setInterval(()=>{n++;d.textContent=`Breaching mainframe... [${'#'.repeat(n)}${'.'.repeat(10-n)}] ${n*10}%`;SC.scrollTop=SC.scrollHeight;if(n>9){clearInterval(t);out('ACCESS GRANTED... just kidding 😄','hl')}},160);
+    const t=setInterval(()=>{n++;d.textContent=`Breaching mainframe... [${'#'.repeat(n)}${'.'.repeat(10-n)}] ${n*10}%`;SC.scrollTop=SC.scrollHeight;if(n>9){clearInterval(t);out('ACCESS GRANTED... just kidding','hl')}},160);
   },
   theme(a){a=a.toLowerCase();if(setTheme(a))out('Theme set to '+esc(a)+'.');else out('Usage: theme &lt;'+Object.keys(TH).join('|')+'&gt;','term-error')},
   cd(a){
-    const M={about:'#about',skills:'#skills',work:'#work',projects:'#work',stats:'#statsSection',contact:'#contact',top:'#hero',home:'#hero'};
-    if(Object.hasOwn(M,a)){out('Jumping to '+esc(a)+'…');setTimeout(()=>document.querySelector(M[a]).scrollIntoView({behavior:'smooth'}),250)}
+    if(Object.hasOwn(SECT,a)){out('Jumping to '+esc(a)+'…');setTimeout(()=>document.querySelector(SECT[a]).scrollIntoView({behavior:'smooth'}),250)}
     else out('cd: no such section: '+esc(a)+'. Try: about, skills, work, stats, contact','term-error');
   },
   ls(){out('about  skills  work  stats  contact')},
@@ -537,7 +567,7 @@ const C={
   echo(a){out(esc(a))},
   clear(){T.innerHTML=''}
 };
-C.social=C.github;
+
 function run(v){
   const s=v.trim();if(!s)return;
   const[n,...r]=s.split(/\s+/),k=n.toLowerCase();
@@ -545,22 +575,77 @@ function run(v){
   else if(Object.hasOwn(X,k))out(X[k],'term-error');
   else out(`command not found: ${esc(n)} — type <span class="hl">help</span> for a list of commands`,'term-error');
 }
+
+const GH=$('gh');let TC=null;
+const CMDS=Object.keys(C).sort();
+const ARGS={theme:Object.keys(TH).sort(),cd:Object.keys(SECT).sort()};
+
+function bestMatch(v){
+  if(!v)return'';
+  const sp=v.indexOf(' ');
+  if(sp<0){
+    const low=v.toLowerCase(),m=CMDS.filter(c=>c.startsWith(low));
+    return m.length?m[0]:'';
+  }
+  const rest=v.slice(sp+1);
+  if(rest.includes(' '))return'';
+  const opts=ARGS[v.slice(0,sp).toLowerCase()];
+  if(!opts)return'';
+  const low=rest.toLowerCase(),m=opts.filter(o=>o.startsWith(low));
+  return m.length?v.slice(0,sp+1)+m[0]:'';
+}
+
+function paintGhost(){
+  const v=I.value,atEnd=I.selectionStart===v.length&&I.selectionEnd===v.length,s=atEnd?bestMatch(v):'';
+  GH.innerHTML=s&&s.length>v.length?esc(v)+'<b>'+esc(s.slice(v.length))+'</b>':'';
+  GH.dataset.full=s;
+}
+
+I.addEventListener('input',()=>{TC=null;paintGhost()});
+I.addEventListener('click',paintGhost);
 I.addEventListener('keydown',e=>{
   if(e.key==='Enter'){
     const v=I.value,d=document.createElement('div');
     d.className='term-line';d.innerHTML='<span class="term-prompt">guest@fariscodess:~$</span> '+esc(v);T.appendChild(d);
-    if(v.trim())hist.push(v);hp=hist.length;run(v);I.value='';SC.scrollTop=SC.scrollHeight;
-  }else if(e.key==='ArrowUp'){e.preventDefault();if(hp>0)I.value=hist[--hp]}
-  else if(e.key==='ArrowDown'){e.preventDefault();I.value=hp<hist.length-1?hist[++hp]:(hp=hist.length,'')}
+    if(v.trim())hist.push(v);hp=hist.length;TC=null;run(v);I.value='';SC.scrollTop=SC.scrollHeight;paintGhost();
+  }else if(e.key==='ArrowUp'){e.preventDefault();TC=null;if(hp>0)I.value=hist[--hp];paintGhost()}
+  else if(e.key==='ArrowDown'){e.preventDefault();TC=null;I.value=hp<hist.length-1?hist[++hp]:(hp=hist.length,'');paintGhost()}
+  else if((e.key==='ArrowRight'||e.key==='End')&&GH.dataset.full&&I.selectionStart===I.value.length){
+    e.preventDefault();TC=null;I.value=GH.dataset.full;paintGhost();
+  }
   else if(e.key==='Tab'){
-    e.preventDefault();const v=I.value.trim().toLowerCase();
-    if(v&&!v.includes(' ')){const m=Object.keys(C).filter(c=>c.startsWith(v));if(m.length===1)I.value=m[0]+' '}
+    e.preventDefault();
+    const full=I.value.trim().toLowerCase();
+    if(!full)return;
+    if(TC&&full===TC.prefix+TC.list[TC.idx]){
+      TC.idx=(TC.idx+1)%TC.list.length;I.value=TC.prefix+TC.list[TC.idx]+' ';paintGhost();return;
+    }
+    TC=null;
+    const sp=full.indexOf(' ');
+    let prefix='',cur=full,pool=CMDS,silent=false;
+    if(sp>=0){
+      const rest=full.slice(sp+1);
+      if(rest.includes(' '))return;
+      pool=ARGS[full.slice(0,sp)];
+      if(!pool)return;
+      prefix=full.slice(0,sp+1);cur=rest;
+    }else if(Object.hasOwn(ARGS,full)){
+      prefix=full+' ';cur='';pool=ARGS[full];silent=true;
+    }
+    const m=pool.filter(c=>c.startsWith(cur));
+    if(m.length===1)I.value=prefix+m[0]+' ';
+    else if(m.length>1){
+      let cp=m[0];for(const c of m){let i=0;while(i<cp.length&&cp[i]===c[i])i++;cp=cp.slice(0,i)}
+      if(cp.length>cur.length)I.value=prefix+cp;
+      else{if(!silent)out(m.join('&nbsp;&nbsp;'));TC={list:m,idx:0,prefix};I.value=prefix+m[0]+' '}
+    }
+    paintGhost();
   }else if(e.key==='l'&&e.ctrlKey){e.preventDefault();C.clear()}
 });
+
 box.addEventListener('click',()=>{if(!getSelection().toString())I.focus({preventScroll:true})});
 const bn=document.createElement('div');bn.className='term-out hl';bn.innerHTML=pre(art('a2'));SC.prepend(bn);
 
-/* ---- Music ---- */
 const au=$('au'),st=$('st'),tg=e=>{e&&e.stopPropagation();au.paused?au.play().catch(()=>{}):au.pause()};
 au.addEventListener('play',()=>st.classList.add('on'));au.addEventListener('pause',()=>st.classList.remove('on'));
 $('pb').onclick=tg;$('pi').onclick=tg;au.volume=.65;
@@ -568,6 +653,14 @@ au.play().catch(()=>{
   const ev=['click','touchstart','keydown','scroll'],go=()=>{au.play().catch(()=>{});ev.forEach(t=>removeEventListener(t,go))};
   ev.forEach(t=>addEventListener(t,go,{once:true,passive:true}));
 });
+
+const cb=document.querySelector('.contact-box');
+if(cb&&'IntersectionObserver'in window){
+  const io=new IntersectionObserver(es=>{
+    if(es[0].isIntersecting){cb.classList.add('bg-on');io.disconnect();}
+  },{rootMargin:'500px'});
+  io.observe(cb);
+}
 
 try{setTheme(localStorage.getItem('th'))}catch{}
 load();
